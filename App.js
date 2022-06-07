@@ -34,7 +34,7 @@ export default function App() {
 
       response.ok ? setCurrentWeather(result) : setErrorMessage(result.message);
     } catch (error) {
-      alert(error);
+      setErrorMessage(error.message);
     }
   }
   return (
