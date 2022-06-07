@@ -39,7 +39,7 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Text>Weather App</Text>
+      <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text>
       <StatusBar style="auto" />
     </View>
   );
