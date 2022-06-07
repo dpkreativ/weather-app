@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
-import { WEATHER_API_KEY } from 'react-native-dotenv';
+import { WEATHER_API_KEY } from '@env';
 
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -29,7 +29,7 @@ export default function App() {
 
       const weatherUrl = `${BASE_WEATHER_URL}?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`;
 
-      const response = await fetch(weatherUrl).then((res) => res.json());
+      const response = await fetch(weatherUrl);
       const result = await response.json();
 
       response.ok ? setCurrentWeather(result) : setErrorMessage(result.message);
@@ -39,7 +39,8 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text>
+      {/* <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text> */}
+      <Text>Hello Divi</Text>
       <StatusBar style="auto" />
     </View>
   );
