@@ -39,7 +39,7 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      {/* <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text> */}
+      <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text>
       <Text>Hello Divi</Text>
       <StatusBar style="auto" />
     </View>
