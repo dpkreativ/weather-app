@@ -4,8 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import { WEATHER_API_KEY } from 'react-native-dotenv';
 
+const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
+
 export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
 
   useEffect(() => {
     load();
@@ -21,9 +24,18 @@ export default function App() {
       }
 
       const location = await Location.getCurrentPositionAsync();
+
       const { latitude, longitude } = location.coords;
-      alert(`Latitude: ${latitude}, Longitude: ${longitude}`);
-    } catch (error) {}
+
+      const weatherUrl = `${BASE_WEATHER_URL}?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`;
+
+      const response = await fetch(weatherUrl).then((res) => res.json());
+      const result = await response.json();
+
+      response.ok ? setCurrentWeather(result) : setErrorMessage(result.message);
+    } catch (error) {
+      alert(error);
+    }
   }
   return (
     <View style={styles.container}>
