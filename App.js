@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
+import { WEATHER_API_KEY } from 'react-native-dotenv';
 
 export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
