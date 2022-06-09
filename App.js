@@ -24,7 +24,9 @@ export default function App() {
         return;
       }
 
-      const location = await Location.getLastKnownPositionAsync();
+      const location = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Highest,
+      });
 
       const { latitude, longitude } = location.coords;
 
