@@ -24,7 +24,7 @@ export default function App() {
         return;
       }
 
-      const location = await Location.getCurrentPositionAsync();
+      const location = await Location.getLastKnownPositionAsync();
 
       const { latitude, longitude } = location.coords;
 
