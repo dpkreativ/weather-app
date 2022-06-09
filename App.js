@@ -38,6 +38,7 @@ export default function App() {
       setErrorMessage(error.message);
     }
   }
+
   return (
     <View style={styles.container}>
       <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text>
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });
