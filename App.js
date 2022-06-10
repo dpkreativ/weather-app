@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import { WEATHER_API_KEY } from '@env';
 import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
+import { colors } from './utils';
 
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -18,6 +19,8 @@ export default function App() {
   }, [tempUnit]);
 
   async function load() {
+    setCurrentWeather(null);
+    setErrorMessage(null);
     try {
       let { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -52,8 +55,10 @@ export default function App() {
             <UnitsPicker tempUnit={tempUnit} setTempUnit={setTempUnit} />
             <WeatherInfo weather={currentWeather} />
           </>
-        ) : (
+        ) : errorMessage ? (
           <Text>{errorMessage}</Text>
+        ) : (
+          <ActivityIndicator size="large" color={colors.PRIMARY_COLOR} />
         )}
       </View>
     </View>
