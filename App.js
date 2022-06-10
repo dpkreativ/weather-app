@@ -49,7 +49,7 @@ export default function App() {
         {currentWeather ? (
           <WeatherInfo weather={currentWeather} />
         ) : (
-          errorMessage
+          <Text>{errorMessage}</Text>
         )}
       </View>
     </View>
