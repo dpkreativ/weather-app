@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import { WEATHER_API_KEY } from '@env';
+import WeatherInfo from './components/WeatherInfo';
 
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -43,9 +44,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>{currentWeather ? currentWeather.main.temp : errorMessage}</Text>
-      <Text>Hello Divi</Text>
       <StatusBar style="auto" />
+      <View style={styles.main}>
+        {currentWeather ? (
+          <WeatherInfo weather={currentWeather} />
+        ) : (
+          errorMessage
+        )}
+      </View>
     </View>
   );
 }
@@ -53,7 +59,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  },
+  main: {
+    flex: 1,
     justifyContent: 'center',
   },
 });
