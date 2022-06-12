@@ -7,6 +7,7 @@ import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
 import { colors } from './utils';
 import RefreshIcon from './components/RefreshIcon';
+import WeatherDetails from './components/WeatherDetails';
 
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -50,19 +51,21 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.main}>
-        {currentWeather ? (
-          <>
+
+      {currentWeather ? (
+        <>
+          <View style={styles.main}>
             <UnitsPicker tempUnit={tempUnit} setTempUnit={setTempUnit} />
             <RefreshIcon triggerRefresh={load} />
             <WeatherInfo weather={currentWeather} />
-          </>
-        ) : errorMessage ? (
-          <Text>{errorMessage}</Text>
-        ) : (
-          <ActivityIndicator size="large" color={colors.PRIMARY_COLOR} />
-        )}
-      </View>
+          </View>
+          <WeatherDetails />
+        </>
+      ) : errorMessage ? (
+        <Text>{errorMessage}</Text>
+      ) : (
+        <ActivityIndicator size="large" color={colors.PRIMARY_COLOR} />
+      )}
     </View>
   );
 }
