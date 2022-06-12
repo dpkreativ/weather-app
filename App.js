@@ -54,7 +54,7 @@ export default function App() {
         {currentWeather ? (
           <>
             <UnitsPicker tempUnit={tempUnit} setTempUnit={setTempUnit} />
-            <RefreshIcon />
+            <RefreshIcon triggerRefresh={load} />
             <WeatherInfo weather={currentWeather} />
           </>
         ) : errorMessage ? (

@@ -3,10 +3,15 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../utils';
 
-export default function RefreshIcon() {
+export default function RefreshIcon({ triggerRefresh }) {
   return (
     <View style={styles.refreshIcon}>
-      <Ionicons name="refresh" size={24} color={colors.PRIMARY_COLOR} />
+      <Ionicons
+        onPress={triggerRefresh}
+        name="refresh"
+        size={24}
+        color={colors.PRIMARY_COLOR}
+      />
     </View>
   );
 }
