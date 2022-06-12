@@ -6,6 +6,7 @@ import { WEATHER_API_KEY } from '@env';
 import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
 import { colors } from './utils';
+import RefreshIcon from './components/RefreshIcon';
 
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -53,6 +54,7 @@ export default function App() {
         {currentWeather ? (
           <>
             <UnitsPicker tempUnit={tempUnit} setTempUnit={setTempUnit} />
+            <RefreshIcon />
             <WeatherInfo weather={currentWeather} />
           </>
         ) : errorMessage ? (
