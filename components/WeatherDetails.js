@@ -19,15 +19,36 @@ export default function WeatherDetails({ weather }) {
             borderRightColor: BORDER_COLOR,
           }}
         >
-          <FontAwesome5
-            name="temperature-low"
-            size={25}
-            color={PRIMARY_COLOR}
-          />
-          <Text>{feels_like}</Text>
+          <View style={styles.weatherDetailsRow}>
+            <FontAwesome5
+              name="temperature-low"
+              size={25}
+              color={PRIMARY_COLOR}
+            />
+            <View style={styles.weatherDetailsItems}>
+              <Text>Feels like:</Text>
+              <Text style={styles.textSecondary}>{feels_like}&deg;</Text>
+            </View>
+          </View>
         </View>
-        <View style={styles.weatherDetailsBox}>
-          <Text>{humidity}</Text>
+        <View
+          style={{
+            ...styles.weatherDetailsBox,
+            borderRightWidth: 1,
+            borderRightColor: BORDER_COLOR,
+          }}
+        >
+          <View style={styles.weatherDetailsRow}>
+            <MaterialCommunityIcons
+              name="water"
+              size={30}
+              color={PRIMARY_COLOR}
+            />
+            <View style={styles.weatherDetailsItems}>
+              <Text>Humidity:</Text>
+              <Text style={styles.textSecondary}>{humidity}&deg;</Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -50,5 +71,15 @@ const styles = StyleSheet.create({
   weatherDetailsBox: {
     flex: 1,
     padding: 20,
+  },
+  weatherDetailsItems: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+  textSecondary: {
+    fontSize: 15,
+    color: SECONDARY_COLOR,
+    fontWeight: '700',
+    margin: 7,
   },
 });
