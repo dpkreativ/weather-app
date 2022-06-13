@@ -62,7 +62,7 @@ export default function App() {
           <WeatherDetails weather={currentWeather} unitSystem={tempUnit} />
         </>
       ) : errorMessage ? (
-        <Text>{errorMessage}</Text>
+        <Text style={{ textAlign: 'center' }}>{errorMessage}</Text>
       ) : (
         <ActivityIndicator size="large" color={colors.PRIMARY_COLOR} />
       )}
