@@ -59,7 +59,7 @@ export default function App() {
             <RefreshIcon triggerRefresh={load} />
             <WeatherInfo weather={currentWeather} />
           </View>
-          <WeatherDetails />
+          <WeatherDetails weather={currentWeather} />
         </>
       ) : errorMessage ? (
         <Text>{errorMessage}</Text>
